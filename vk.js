@@ -36,7 +36,7 @@ async function output(){
 	});
 	//done_arr = mergeNoDuplicates(free_g, free_u);
 	//console.log(done_arr);
-	console.log(done_arr)
+	//console.log(done_arr)
 	const writeStream = fs.createWriteStream('output.txt');
 	const pathName = writeStream.path;
 	done_arr.forEach(value => writeStream.write(`${value}\n`));
