@@ -5,7 +5,7 @@ const vk = new VK({
 });
 const fs = require("fs");
 const data = fs.readFileSync('./input.txt', {encoding:'utf8'});
-let data_string = data.toString();
+let data_string = data.toString().toLowerCase();
 let arr = data_string.split('\r\n');
 
 //console.log(arr)
@@ -20,7 +20,7 @@ async function check_available() {
 	for (let i=0; i < arr.length; i++) { 
 	try{ groups = await vk.api.groups.getById({group_id: arr[i].replace(/\s/g, '') });}catch(err){free_g.push(arr[i])};
 	try{ users = await vk.api.users.get({user_ids: arr[i].replace(/\s/g, '') }); if (!users.length){free_u.push(arr[i])};}catch(err){};
-	users = await vk.api.users.get({user_ids: arr[i].replace(/\s/g, '') });
+	//users = await vk.api.users.get({user_ids: arr[i].replace(/\s/g, '') });
 	//console.log(users);
 	}
 };
